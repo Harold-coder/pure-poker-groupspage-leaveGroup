@@ -16,7 +16,15 @@ exports.handler = async (event) => {
         const group = result.Item;
 
         if (!group) {
-            return { statusCode: 404, body: JSON.stringify({ message: "Group not found." }) };
+            return { 
+                statusCode: 404, 
+                body: JSON.stringify({ message: "Group not found." }),
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST"
+                }  
+            };
         }
 
         // Remove the user from membersList
