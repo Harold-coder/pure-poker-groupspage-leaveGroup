@@ -43,6 +43,14 @@ exports.handler = async (event) => {
         };
     } catch (err) {
         console.error('Error leaving group:', err);
-        return { statusCode: 500, body: JSON.stringify({ message: "Failed to leave group" }) };
+        return { 
+            statusCode: 500, 
+            body: JSON.stringify({ message: "Failed to leave group" }),
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "OPTIONS,POST"
+            }  
+        };
     }
 };
