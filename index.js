@@ -32,7 +32,15 @@ exports.handler = async (event) => {
             },
         }).promise();
 
-        return { statusCode: 200, body: JSON.stringify({ message: "User removed from group." }) };
+        return {
+            statusCode: 200, 
+            body: JSON.stringify({ message: "User removed from group." }),
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "OPTIONS,POST"
+            }            
+        };
     } catch (err) {
         console.error('Error leaving group:', err);
         return { statusCode: 500, body: JSON.stringify({ message: "Failed to leave group" }) };
